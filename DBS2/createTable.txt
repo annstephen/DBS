@@ -1,0 +1,35 @@
+mysql> -t
+    -> \. createTable.sql 
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 0 rows affected (0.38 sec)
+
+Query OK, 0 rows affected (0.31 sec)
+
+Query OK, 0 rows affected (0.34 sec)
+
+Query OK, 0 rows affected (0.31 sec)
+
+Query OK, 0 rows affected (0.31 sec)
+
+Query OK, 0 rows affected (0.31 sec)
+
+Query OK, 0 rows affected (0.36 sec)
+
+Query OK, 0 rows affected (0.44 sec)
+
+Query OK, 0 rows affected (0.36 sec)
+
+Query OK, 0 rows affected (0.39 sec)
+
+Query OK, 0 rows affected (0.31 sec)
+
+Query OK, 0 rows affected (0.31 sec)
+
+Query OK, 0 rows affected (0.38 sec)
+
+Query OK, 0 rows affected (0.34 sec)
+
+Query OK, 0 rows affected (0.36 sec)
+
+mysql> \t

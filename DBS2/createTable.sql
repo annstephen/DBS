@@ -1,0 +1,16 @@
+Create schema Hospital;
+create table Hospital.employees (employee_number int PRIMARY key, name varchar(100), location varchar(50), ssn int, home_address varchar(100), phone_number int, designation varchar(50));
+CREATE table Hospital.physician (employee_number int primary key references Hospital.employees(employee_number), certification_no int, specialization varchar(100));
+create table hospital.Patient (patient_registration_no int primary key, name varchar(100), ssn int, address varchar(100), contact_no int, emergency_contact_no int);
+CREATE TABLE Hospital.SHIFT (shift_name varchar(20) primary KEY, begin_time time, end_time time);
+CREATE TABLE Hospital.TAKES (employee_number int references hospital.employees(employee_number), shift_name varchar(20) references hospital.shift(shift_name), primary key(employee_number, shift_name)); 
+create table hospital.Department (department_id int PRIMARY KEY, department_name varchar(75) , head_of_department int );  
+CREATE TABLE HOSPITAL.Belongs_to (employee_number int references hospital.employees(employee_number), department_id INT references hospital.department(department_id),  PRIMARY KEY (EMPLOYEE_NUMBER, DEPARTMENT_ID));
+create table hospital.Consulted(employee_number int not null references Hospital.physician(employee_number), certification_no int not null references Hospital.physician(certification_no), patient_registration_no int references Hospital.visitation(patient_registration_no), date_of_visit date references Hospita.visitation(date_of_visit), primary key (employee_number, certification_no, patient_registration_no, date_of_visit )); 
+create table hospital.Visitation ( patient_registration_no int references Hospital.patient(patient_registration_no), date_of_visit date, diagnosis varchar(100), primary key(patient_registration_no,date_of_visit)); 
+create table hospital.Treated_by (patient_registration_no int references hospital.visitation(patient_registration_no), date_of_visit date references hospital.visitation(date_of_visit), employee_number int references Hospital.employees(employee_number), treatment varchar(100), primary key(patient_registration_no, date_of_visit, employee_number)); 
+create table hospital.Batch (batch_id int primary key, manufacture_date date, expiry_date date);
+create table hospital.Pharmaceutical_product (product_id int primary key, cost real, manufacturer varchar(100)); 
+create table hospital.Production (product_id int references Hospital.Pharmaceutical_product(product_id), batch_id int references Hospital.batch(batch_id), primary key (product_id, batch_id));
+create table hospital.Medicine (product_id int primary key references Hospital.Pharmaceutical_product(product_id), medicine_name varchar(100), dosage varchar(100));  
+create table hospital.Prescribed (product_id int references Hospital.Madicine(product_id), patient_registration_no int references Hospital.Visitation(patient_registration_no), date_of_visit date references Hospital.Visitation(date_of_visit), primary key(product_id, patient_registration_no,date_of_visit)); 
